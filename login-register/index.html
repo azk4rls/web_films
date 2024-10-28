@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="styles2.css">
+    <script>
+        function validateForm() {
+            const inputs = document.querySelectorAll("input");
+            const button = document.getElementById("registerButton");
+            // Cek apakah semua input terisi
+            const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+            button.disabled = !allFilled;
+        }
+
+        function register(event) {
+            event.preventDefault(); // Mencegah pengiriman form dan reload halaman
+            // Logika untuk pendaftaran (misalnya, kirim data ke server)
+            alert("Pendaftaran berhasil!");
+            // Redirect ke halaman login setelah pendaftaran
+            window.location.href = 'login.html'; // Ganti dengan halaman login yang diinginkan
+        }
+    </script>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form oninput="validateForm()" onsubmit="register(event)">
+            <label for="email">Email:</label>
+            <input type="email" id="email"required>
+            <br>
+            <label for="username">Username:</label>
+            <input type="text" id="username"required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password"required>
+            <br>
+            <button id="registerButton" disabled type="submit"><b>Register</b></button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a>.</p>
+    </div>
+</body>
+</html>
